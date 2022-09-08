@@ -10,6 +10,18 @@ void print(int a[], int n){
     cout << endl;
 }
 
+void insertion_sort(int a[], int n){
+    for(int i = 1; i < n; i++){
+        int mark = a[i];
+        int j = i - 1;
+        while(j >= 0 && mark < a[j]){
+            a[j+1] = a[j];
+            j--;
+        }
+        a[j+1] = mark;
+    }
+}
+
 int main(){
     ifstream infile("input.txt");
     int n;
@@ -18,6 +30,9 @@ int main(){
     for(int i = 0; i < n; i++){
         infile >> a[i];
     }
+    print(a, n);
+    // Insertion sort
+    insertion_sort(a, n);
     print(a, n);
     infile.close();
     return 0;
